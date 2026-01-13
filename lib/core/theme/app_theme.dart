@@ -70,11 +70,12 @@ class AppTheme {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
+
         minimumSize: const Size(
-          double.infinity,
+          300,
           60,
         ), // أزرار تطبيقات الطعام عادة ما تكون ضخمة
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         elevation: 0,
       ),
