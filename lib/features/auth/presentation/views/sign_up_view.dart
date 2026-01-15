@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/core/utils/validator.dart';
+import 'package:food_delivery_app/features/auth/presentation/widgets/auth_divider_widget.dart';
+import 'package:food_delivery_app/features/auth/presentation/widgets/social_button_widget.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -79,13 +81,39 @@ class _SignUpViewState extends State<SignUpView> {
                     obscureText: true,
                   ),
                   const SizedBox(height: 30),
-
                   Center(
                     child: ElevatedButton(
                       onPressed: signUp,
+
                       child: const Text('Sign Up'),
                     ),
                   ),
+                  const SizedBox(height: 20),
+                  AuthDividerWidget(),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SocialButtonWidget(
+                        icon: Icons.g_mobiledata,
+                        label: 'Google',
+                        color: Colors.white,
+                        textColor: Colors.black,
+                        iconColor: Colors.red,
+                        onPressed: () {},
+                      ),
+                      SocialButtonWidget(
+                        icon: Icons.facebook,
+                        label: 'Facebook',
+                        color: const Color(0xFF1877F2),
+                        textColor: Colors.white,
+                        iconColor: Colors.white,
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
@@ -94,7 +122,6 @@ class _SignUpViewState extends State<SignUpView> {
       ),
     );
   }
-
   void signUp() {
     if (_formKey.currentState!.validate()) {
       // Process data.
