@@ -18,7 +18,7 @@ class FavoriteView extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return FoodCardWidget(
-            name: 'Favorite Item ${index + 1}',
+            name: 'Favorite Item',
             subTitle: 'SubTitle ${index + 1}',
             price: '\$${(index + 1) * 5}.99',
             rating: 4.5,
