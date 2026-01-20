@@ -1,3 +1,5 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class FoodCardWidget extends StatelessWidget {
@@ -6,6 +8,7 @@ class FoodCardWidget extends StatelessWidget {
   final String price;
   final double rating;
   final String imageUrl;
+  final bool isFavoriteWidget;
 
   const FoodCardWidget({
     super.key,
@@ -14,6 +17,7 @@ class FoodCardWidget extends StatelessWidget {
     required this.price,
     required this.rating,
     required this.imageUrl,
+    this.isFavoriteWidget = false,
   });
 
   @override
@@ -37,54 +41,81 @@ class FoodCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          child: Stack(
             children: [
-              // الاسم (Title)
-              Text(
-                name,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  height: 1.2,
-                ),
-              ),
-              const SizedBox(height: 8),
-              // العنوان الفرعي (Subtitle)
-              Text(
-                subTitle,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 14, color: Colors.grey),
-              ),
-              const SizedBox(height: 10),
-              // التقييم (Rating)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8,
                 children: [
-                  const Icon(Icons.star, color: Colors.orange, size: 18),
-                  const SizedBox(width: 4),
-                  Text(
-                    rating.toString(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  // الاسم (Title)
+                  AutoSizeText(
+                    name,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      height: 1.2,
+                    ),
+                  ),
+                  // العنوان الفرعي (Subtitle)
+                  FittedBox(
+                    child: Text(
+                      subTitle,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 14, color: Colors.grey),
+                    ),
+                  ),
+                  // التقييم (Rating)
+                  FittedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.star, color: Colors.orange, size: 18),
+                        const SizedBox(width: 4),
+                        Text(
+                          rating.toString(),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // السعر (Price)
+                  FittedBox(
+                    child: Text(
+                      price,
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: theme
+                            .colorScheme
+                            .primary, // اللون البرتقالي الموجود في الصورة
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
-              // السعر (Price)
-              Text(
-                price,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: theme
-                      .colorScheme
-                      .primary, // اللون البرتقالي الموجود في الصورة
+
+              if (isFavoriteWidget)
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                      size: 28,
+                    ),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                  ),
                 ),
-              ),
             ],
           ),
         ),
+
         // الصورة الدائرية (Image)
         Positioned(
           top: 0,
