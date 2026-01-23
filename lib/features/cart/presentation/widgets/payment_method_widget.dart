@@ -62,6 +62,7 @@ class PaymentMethodWidget extends StatelessWidget {
 
               const SizedBox(width: 16),
               Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     title,

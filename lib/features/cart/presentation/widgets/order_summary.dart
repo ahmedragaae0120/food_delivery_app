@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CartSummary extends StatelessWidget {
+class OrderSummary extends StatelessWidget {
   final double subtotal;
   final double taxes;
   final double deliveryFees;
   final double total;
 
-  const CartSummary({
+  const OrderSummary({
     super.key,
     required this.subtotal,
     required this.taxes,
@@ -19,6 +19,7 @@ class CartSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       spacing: 10,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           'Order summary',
