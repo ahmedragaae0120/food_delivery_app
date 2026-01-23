@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_delivery_app/core/utils/app_assets.dart';
 
 enum PaymentMethod { cashOnDelivery, creditCard }

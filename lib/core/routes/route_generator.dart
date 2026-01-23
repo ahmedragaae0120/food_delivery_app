@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/core/routes/routes.dart';
 import 'package:food_delivery_app/features/auth/presentation/views/auth_view.dart';
 import 'package:food_delivery_app/features/auth/presentation/views/login_view.dart';
+import 'package:food_delivery_app/features/cart/presentation/views/cart_view.dart';
+import 'package:food_delivery_app/features/cart/presentation/views/checkout_view.dart';
 import 'package:food_delivery_app/features/navigation_home/presentation/pages/navigation_home_view.dart';
 import 'package:food_delivery_app/features/onboarding/onboarding_screen.dart';
 
@@ -21,6 +23,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (context) => const NavigationHomeView(),
         );
+      case Routes.cart:
+        return MaterialPageRoute(builder: (context) => const CartView());
+      case Routes.checkout:
+        return MaterialPageRoute(builder: (context) => const CheckoutView());
       default:
         return _undefinedRoute();
     }
