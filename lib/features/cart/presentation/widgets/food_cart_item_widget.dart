@@ -31,8 +31,8 @@ class _FoodCartItemState extends State<FoodCartItem> {
         borderRadius: BorderRadius.circular(24.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: (0.05)),
-            blurRadius: 10,
+            color: Colors.black.withValues(alpha: (0.08)),
+            blurRadius: 20,
             offset: const Offset(0, 4),
           ),
         ],
