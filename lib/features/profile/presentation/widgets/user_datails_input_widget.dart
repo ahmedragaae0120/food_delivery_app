@@ -19,12 +19,17 @@ class UserDetailInputWidget extends StatelessWidget {
     final theme = Theme.of(context);
     return TextFormField(
       initialValue: initialValue,
+      style: const TextStyle(color: Colors.black),
       obscureText: isPassword,
       enabled: false,
-
       decoration: InputDecoration(
-        labelText: label,
-        suffixIcon: showLock ? const Icon(Icons.lock) : null,
+        label: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(label, style: const TextStyle(color: Colors.black)),
+            if (showLock) const Icon(Icons.lock),
+          ],
+        ),
         hoverColor: theme.colorScheme.primary,
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
